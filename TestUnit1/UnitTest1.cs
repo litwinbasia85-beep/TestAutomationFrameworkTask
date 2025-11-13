@@ -33,7 +33,6 @@ namespace TestLayer
             var ErrorLogin = loginPage.ErrorLogin(admin, 1, password).getErrorMessage();
 
             Assert.That(ErrorLogin.Contains(error_substring));
-            Assert.Pass();
         }
         [Test]
         public void Test2()
@@ -45,7 +44,6 @@ namespace TestLayer
             var ErrorLogin = loginPage.ErrorLogin(admin, 2).getErrorMessage();
 
             Assert.That(ErrorLogin.Contains(error_substring));
-            Assert.Pass();
         }
 
         [TestCase("standard_user", "secret_sauce")]
@@ -61,7 +59,6 @@ namespace TestLayer
             var LogoText = loginPage.Login(admin, password).getLogoText();
 
             Assert.That(LogoText.Contains(logo_substring));
-            Assert.Pass();
         }
         [TearDown]
         public void Teardown()
