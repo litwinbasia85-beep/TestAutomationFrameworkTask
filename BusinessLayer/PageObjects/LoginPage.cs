@@ -37,7 +37,7 @@ namespace BusinessLayer.PageObjects
                     driver.ClearInput(passwordLocator);
                     break;
                 case 2:
-                    driver.Equals(passwordLocator);
+                    driver.EnterInput(passwordLocator);
                     driver.ClearInput(passwordLocator);
                     break;
                 default:
