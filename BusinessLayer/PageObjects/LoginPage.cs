@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
 using CoreLayer;
-using System.Reflection.Metadata.Ecma335;
-using System.Diagnostics.Metrics;
 
 namespace BusinessLayer.PageObjects
 {
@@ -30,17 +20,15 @@ namespace BusinessLayer.PageObjects
 
         public MainPage Login(string login, string password)
         {
-            IWebElement el = driver.WaitForElementToBePresent(userNameLocator);
             driver.EnterText(userNameLocator, login);
             driver.EnterText(passwordLocator, password);
             driver.Click(LoginButtonLocator);
 
             return new MainPage(driver);
         }
-        public LoginPage ErrorLogin(string login, string password, int TestNumber)
+        public LoginPage ErrorLogin(string login, int TestNumber, string password = "")
         {
             driver.EnterText(userNameLocator, login);
-            //  driver.EnterText(passwordLocator, password);
             switch (TestNumber)
             {
                 case 1:
@@ -49,6 +37,7 @@ namespace BusinessLayer.PageObjects
                     driver.ClearInput(passwordLocator);
                     break;
                 case 2:
+                    driver.Equals(passwordLocator);
                     driver.ClearInput(passwordLocator);
                     break;
                 default:

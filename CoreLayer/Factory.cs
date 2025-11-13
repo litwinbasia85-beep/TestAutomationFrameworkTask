@@ -8,7 +8,7 @@ namespace CoreLayer.WebDriver
 {
     public class Factory
     {
-        private const int WaitTimeInSeconds = 30;
+        private const double WaitTimeInSeconds = 30;
         public static IWebDriver CreateWebDriver(BrowserType browserType)
         {
             switch (browserType)
@@ -25,8 +25,7 @@ namespace CoreLayer.WebDriver
                 case BrowserType.Edge:
                     var service1 = EdgeDriverService.CreateDefaultService();
                     EdgeOptions options1 = new();
-                    options1.AddArgument("disable-infobars");
-                    options1.AddArgument("--incognito");
+                    options1.AddArgument("inprivate");
                     return new EdgeDriver(service1, options1, TimeSpan.FromSeconds(WaitTimeInSeconds));
                 default:
                     throw new ArgumentOutOfRangeException(nameof(browserType), browserType, null);

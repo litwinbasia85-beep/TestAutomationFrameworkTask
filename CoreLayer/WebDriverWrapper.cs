@@ -8,12 +8,9 @@ namespace CoreLayer
     public class WebDriverWrapper
     {
         private readonly TimeSpan _timeout;
-
         private readonly IWebDriver _driver;
-
-        private const int WaitTimeInSeconds = 50;
-
-
+        private const double WaitTimeInSeconds = 50;
+        private const double IntervalInSeconds = 0.25;
         public WebDriverWrapper(BrowserType browserType)
         {
             _driver = Factory.CreateWebDriver(browserType);
@@ -22,7 +19,7 @@ namespace CoreLayer
         public IWebElement WaitForElementToBePresent(By by)
         {
             var searchPanelWait = new WebDriverWait(this._driver, _timeout);
-            searchPanelWait.PollingInterval = TimeSpan.FromSeconds(0.25);
+            searchPanelWait.PollingInterval = TimeSpan.FromSeconds(IntervalInSeconds);
             searchPanelWait.Message = "Element has not been found.";
             IWebElement element = searchPanelWait.Until(_driver => _driver.FindElement(by));
             if (element != null && element.Displayed)
@@ -100,13 +97,17 @@ namespace CoreLayer
             string? cmd = this.PlatformName();
             if (cmd != null)
             {
-                string cmdCtrl = cmd.Contains("mac") ? Keys.Command : Keys.Control;
                 var clickAndSendKeyActions = new Actions(_driver);
                 clickAndSendKeyActions.Click(element)
                             .Pause(TimeSpan.FromSeconds(1))
                             .SendKeys(text)
                             .Perform();
             }
+        }
+        public void EnterInput(By by)
+        {
+            var element = WaitForElementToBePresent(by);
+            element.SendKeys(Keys.Enter);
         }
         public void Close()
         {

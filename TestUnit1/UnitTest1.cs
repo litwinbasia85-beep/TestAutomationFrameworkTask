@@ -30,7 +30,7 @@ namespace TestLayer
             string password = "password";
             string error_substring = "Username is required";
 
-            var ErrorLogin = loginPage.ErrorLogin(admin, password, 1).getErrorMessage();
+            var ErrorLogin = loginPage.ErrorLogin(admin, 1, password).getErrorMessage();
 
             Assert.That(ErrorLogin.Contains(error_substring));
             Assert.Pass();
@@ -40,10 +40,9 @@ namespace TestLayer
         {
             LoginPage loginPage = new LoginPage(Browser);
             string admin = "admin";
-            string password = "password";
             string error_substring = "Password is required";
 
-            var ErrorLogin = loginPage.ErrorLogin(admin, password, 2).getErrorMessage();
+            var ErrorLogin = loginPage.ErrorLogin(admin, 2).getErrorMessage();
 
             Assert.That(ErrorLogin.Contains(error_substring));
             Assert.Pass();
@@ -57,8 +56,8 @@ namespace TestLayer
         public void Test3(string admin, string password)
         {
             string logo_substring = "Swag Labs";
-            LoginPage loginPage = new LoginPage(Browser);
 
+            LoginPage loginPage = new LoginPage(Browser);
             var LogoText = loginPage.Login(admin, password).getLogoText();
 
             Assert.That(LogoText.Contains(logo_substring));
