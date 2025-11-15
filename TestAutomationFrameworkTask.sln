@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{4B74D5D5-BD1E-4F3E-9939-AEE09B7AE7D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{4B74D5D5-BD1E-4F3E-9939-AEE09B7AE7D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{B1D1C76D-5833-4550-96C5-B67B1DE6288C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{B1D1C76D-5833-4550-96C5-B67B1DE6288C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnit1", "TestUnit1\TestUnit1.csproj", "{25F71940-E046-4524-AC57-E5CB66EFF690}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLayer", "TestUnit1\TestLayer.csproj", "{25F71940-E046-4524-AC57-E5CB66EFF690}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{BF5D00B8-0953-49F8-976C-2FCB9BF026F4}"
 	ProjectSection(SolutionItems) = preProject

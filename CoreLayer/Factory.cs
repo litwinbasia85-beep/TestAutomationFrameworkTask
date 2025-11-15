@@ -7,11 +7,13 @@ namespace CoreLayer.WebDriver
     public class Factory
     {
         private const double WaitTimeInSeconds = 30;
-        public static IWebDriver CreateWebDriver(BrowserType browserType)
+        private static string? Browser = Configuration.BrowserType;
+
+        public static IWebDriver CreateWebDriver()
         {
-            switch (browserType)
+            switch (Browser)
             {
-                case BrowserType.Chrome:
+                case "Chrome":
                     {
                         var service = ChromeDriverService.CreateDefaultService();
                         ChromeOptions options = new();
@@ -20,13 +22,13 @@ namespace CoreLayer.WebDriver
 
                         return new ChromeDriver(service, options, TimeSpan.FromSeconds(WaitTimeInSeconds));
                     }
-                case BrowserType.Edge:
+                case "Edge":
                     var service1 = EdgeDriverService.CreateDefaultService();
                     EdgeOptions options1 = new();
                     options1.AddArgument("inprivate");
                     return new EdgeDriver(service1, options1, TimeSpan.FromSeconds(WaitTimeInSeconds));
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(browserType), browserType, null);
+                    throw new ArgumentOutOfRangeException(nameof(Browser), Browser, null);
             }
         }
     }

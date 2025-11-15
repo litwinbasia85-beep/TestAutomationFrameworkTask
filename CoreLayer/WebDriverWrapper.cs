@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
-using System;
+
 namespace CoreLayer
 {
     public class WebDriverWrapper
@@ -11,9 +11,9 @@ namespace CoreLayer
         private readonly IWebDriver _driver;
         private const double WaitTimeInSeconds = 50;
         private const double IntervalInSeconds = 0.25;
-        public WebDriverWrapper(BrowserType browserType)
+        public WebDriverWrapper()
         {
-            _driver = Factory.CreateWebDriver(browserType);
+            _driver = Factory.CreateWebDriver();
             _timeout = TimeSpan.FromSeconds(WaitTimeInSeconds);
         }
         public IWebElement WaitForElementToBePresent(By by)
